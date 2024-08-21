@@ -10,3 +10,4 @@ def solution(word):
     words.sort()
 
     return words.index(word) + 1
+

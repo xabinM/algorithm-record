@@ -29,3 +29,4 @@ for _ in range(t):
         print('happy')
     else:
         print('sad')
+        

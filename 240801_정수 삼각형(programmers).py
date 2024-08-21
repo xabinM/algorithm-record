@@ -12,4 +12,3 @@ def solution(triangle):
     
     answer = max(triangle[-1])
     return answer
-
