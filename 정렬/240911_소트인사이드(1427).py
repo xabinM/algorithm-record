@@ -33,3 +33,12 @@ def insert_sort2(arr): # 올바른 버전
         arr[j + 1] = key
     return arr
 
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n-1):
+        temp = i
+        for j in range(i + 1, n): # 최소값 찾기
+            if arr[j] < arr[temp]:
+                temp = j
+        arr[i], arr[temp] = arr[temp], arr[i]
+    return arr
