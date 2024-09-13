@@ -42,3 +42,42 @@ def selection_sort(arr):
                 temp = j
         arr[i], arr[temp] = arr[temp], arr[i]
     return arr
+
+def merge_sort(arr):
+    n = len(arr)
+    if n <= 1:
+        return arr
+    
+    mid = n // 2
+    left = arr[:mid]
+    right = arr[mid:]
+
+    return merge(merge_sort(left), merge_sort(right))
+
+def merge(left, right):
+    sorted_arr = []
+    l, h = 0, 0
+
+    while l < len(left) and h < len(right):
+        if left[l] < right[h]:
+            sorted_arr.append(left[l])
+            l += 1
+        else:
+            sorted_arr.append(right[h])
+            h += 1
+
+    if l < len(left):
+        sorted_arr.extend(left[l:])
+    if h < len(right):
+        sorted_arr.extend(right[h:])
+    
+    return sorted_arr
+
+# print(''.join(map(str, merge_sort(arr))))
+
+# 1427 3947
+# 14 27 39 47
+# 1 4 2 7 3 9 4 7
+# 14 27 39 47
+# 1247 3479
+# 1234779
