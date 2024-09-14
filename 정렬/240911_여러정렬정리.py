@@ -43,6 +43,7 @@ def selection_sort(arr):
         arr[i], arr[temp] = arr[temp], arr[i]
     return arr
 
+# 머지소트
 def merge_sort(arr):
     n = len(arr)
     if n <= 1:
@@ -125,4 +126,6 @@ def quick_sort_inplace(arr, low, high):
         quick_sort_inplace(arr, pi + 1, high)
     return arr
 
-print(quick_sort_inplace(arr, 0, len(arr) - 1))
+# print(quick_sort_inplace(arr, 0, len(arr) - 1))
+
+# 힙 소트
