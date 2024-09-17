@@ -129,3 +129,35 @@ def quick_sort_inplace(arr, low, high):
 # print(quick_sort_inplace(arr, 0, len(arr) - 1))
 
 # 힙 소트
+
+def heapify(arr, n, i): # 힙 구조로 만들기 : 배열의 요소를 루트노드부터 자식노드와 비교하여 부모 노드가 항상 자식보다 크도록 조정
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+    
+def heap_sort(arr):
+    n = len(arr)
+
+    # 배열을 힙 구조로 변환
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # 힙 정렬 (루트와 마지막 요소 교환 후 다시 heapify)
+    for i in range(n - 1, 0, -1):
+        arr[i], arr[0] = arr[0], arr[i]
+
+        heapify(arr, i, 0)
+
+heap_sort(arr)
+
+print(arr)
