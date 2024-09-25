@@ -17,7 +17,7 @@ def solution():
             if right_stack:
                 left_stack.append(right_stack.pop())
         elif command[0] == 'B':
-            if left_stack:
+            if left_stack:  
                 left_stack.pop()
         elif command[0] == 'P':
             left_stack.append(command[1])
