@@ -1,28 +1,28 @@
-def backTrack(temp, N):
+def backTrack(temp, depth, N):
     global max_value
 
-    if len(temp) == N:
+    if depth == N:
         current_max_value = 0
         for i in range(N - 1):
             current_max_value += abs(temp[i] - temp[i + 1])
         max_value = max(max_value, current_max_value)
+        return
 
     
     for i in range(N):
         if not visited[i]:
             visited[i] = True
-            temp.append(arr[i])
+            temp[depth] = arr[i]
 
-            backTrack(temp, N)
+            backTrack(temp, depth + 1, N)
 
             visited[i] = False
-            temp.pop()
 
 N = int(input())
 arr = list(map(int, input().split()))
 visited = [False] * N
 max_value = 0
 
-backTrack([], N)
+backTrack([0] * N, 0, N)
 
 print(max_value)
