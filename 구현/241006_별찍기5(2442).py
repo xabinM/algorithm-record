@@ -1,5 +1,6 @@
-N = int(input())
+def solution(N):
+    for i in range(1, N + 1):
+        print(' ' * (N - i) + '*' * i + '*' * (i - 1))
 
-for i in range(1, N + 1):
-    print(' ' * (N - i), end = '')
-    print('*' * (2 * i - 1))
+N = int(input())
+solution(N)
