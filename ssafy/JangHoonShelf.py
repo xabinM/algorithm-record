@@ -1,32 +1,24 @@
-def backtrace(limit, cur_sum):
-    global result
-
-    if cur_sum >= result:
-        return
-
-    if limit <= cur_sum:
-        result = min(result, cur_sum)
-        print(result)
-        return
-
-    for i in range(N):
-        if not visited[i]:
-            visited[i] = True
-            backtrace(limit, cur_sum + S[i])
-            visited[i] = False
-
 T = int(input())
 
 for t in range(1, T + 1):
     N, B = map(int, input().split())
     S = list(map(int, input().split()))
 
-    S.sort(reverse=True)
+    # DP 배열의 크기는 키의 최대 합까지만 필요
+    max_sum = sum(S)
+    dp = [False] * (max_sum + 1)
+    dp[0] = True  # 초기값: 아무 것도 선택하지 않았을 때 합은 0
 
-    visited = [False] * N
+    # DP 갱신
+    for height in S:
+        for cur_sum in range(max_sum, height - 1, -1):
+            if dp[cur_sum - height]:
+                dp[cur_sum] = True
+    # # B 이상에서 가장 작은 합 찾기
     result = float('inf')
+    for i in range(B, max_sum + 1):
+        if dp[i]:
+            result = i
+            break
 
-    backtrace(B, 0)
-
-    print("#{}".format(t), result - B)
-
+    print(f"#{t} {result - B}")
